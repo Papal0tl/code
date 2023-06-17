@@ -12,13 +12,10 @@ md.pattern(cr_data) #Many missing values in May
 
 library(ggplot2)
 ggplot(data = cr_data, aes(x5)) + geom_density(fill="lightskyblue") + xlim(0,25000) + geom_vline(aes(xintercept = median(cr_data$x5[!is.na(cr_data$x5)])), col = "red", lty = 2, lwd = 1)
-cr_data$x5[is.na(cr_data$x5)]=median(cr_data$x5[!is.na(cr_data$x5)]
+cr_data$x5[is.na(cr_data$x5)]=median(cr_data$x5[!is.na(cr_data$x5)])
 cr_data<-na.omit(cr_data)
+boxplot(cr_data$x2)
 
-
-
-hii<-hatvalues(mod)
-r<- rstandard(mod)
-D<- cooks.distance(mod)
-r[abs(r)>2]
-D[D>1]
+boxplot(cr_data$x3, cr_data$x7, cr_data$x9)
+unique(cr_data$x3)
+unique(cr_data$x7)
